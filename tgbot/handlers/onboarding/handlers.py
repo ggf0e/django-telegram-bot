@@ -37,3 +37,13 @@ def secret_level(update: Update, context: CallbackContext) -> None:
         message_id=update.callback_query.message.message_id,
         parse_mode=ParseMode.HTML
     )
+
+def about_author(update: Update, context: CallbackContext) -> None:
+    user_id = extract_user_data_from_update(update)['user_id']
+    text = static_text.about_author_text
+    context.bot.edit_message_text(
+        text=text,
+        chat_id=user_id,
+        message_id=update.callback_query.message.message_id,
+        parse_mode=ParseMode.HTML
+    )
